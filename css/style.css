@@ -1,0 +1,96 @@
+/* Estilos gerais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(163, 2, 2, 0.1);
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* Formulário */
+.form {
+    margin: 20px 0;
+}
+
+.campoPalpite {
+    padding: 10px;
+    width: 60px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.envioPalpite {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.envioPalpite:hover {
+    background-color: #2980b9;
+}
+
+/* Resultados */
+.resultados {
+    margin-top: 20px;
+}
+
+.palpites, .ultimoResultado, .baixoOuAlto {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.ultimoResultado {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.baixoOuAlto {
+    color: #e74c3c;
+    font-style: italic;
+}
+
+/* Botão de reinício */
+button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
