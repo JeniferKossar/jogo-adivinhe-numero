@@ -1,0 +1,517 @@
+/* ======================== VARIÁVEIS GLOBAIS E RESET ======================== */
+:root {
+    /* Cores */
+    --primary-color: #2c6e49;
+    --primary-color-darker: #24583c;
+    --secondary-color: #4d908e;
+    --bg-color-light: #eaf5e9; 
+    --bg-color-medium: #d1ecce;
+    --bg-color-white: #ffffff;
+    --text-color-dark: #333333;
+    --text-color-light: #555555;
+    --footer-bg-color: #028a52;
+    --error-color: #dc3545;
+    --border-color: #e0e0e0;
+    --input-bg-color: #f9f9f9;
+
+    /* Tipografia */
+    --font-primary: 'Figtree', sans-serif; /* Para títulos */
+    --font-secondary: 'Mulish', sans-serif; /* Para corpo de texto */
+
+    /* Tamanhos de Fonte */
+    --fs-h1: 2.2rem;
+    --fs-h2: 1.9rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1.1rem;
+    --fs-small: 1.0rem;
+    --fs-error: 0.9rem;
+
+    /* Espaçamento */
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 25px;
+    --spacing-xl: 30px;
+
+    /* Outros */
+    --border-radius-sm: 8px;
+    --border-radius-md: 15px;
+    --border-radius-lg: 50px;
+    --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+    --shadow-strong: 0 7px 20px rgba(0, 0, 0, 0.18);
+    --transition: all 0.3s ease;
+}
+
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-secondary);
+    line-height: 1.5;
+    color: var(--text-color-dark);
+    background-color: var(--bg-color-medium);
+}
+
+/* ======================== TIPOGRAFIA BASE ======================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+h1 { font-size: var(--fs-h1); margin-bottom: var(--spacing-md); }
+h2 { font-size: var(--fs-h2); margin-bottom: var(--spacing-lg); }
+h3 { font-size: var(--fs-h3); margin-bottom: var(--spacing-md); }
+
+p {
+    color: var(--text-color-light);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--fs-body);
+    line-height: 1.5;
+}
+
+/* ======================== LAYOUT GERAL ======================== */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+main section {
+    padding: 10px; 
+    margin: 0 0 var(--spacing-lg) 0;
+}
+
+/* ======================== CABEÇALHO E NAVEGAÇÃO ======================== */
+header {
+    background-color: var(--bg-color-white);
+    box-shadow: var(--shadow-light);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: var(--spacing-sm) 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 50px;
+    margin-right: var(--spacing-sm);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-md); 
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color-dark);
+    font-weight: 600;
+    font-size: var(--fs-small);
+    padding: 5px 0;
+    position: relative;
+    transition: var(--transition);
+}
+
+nav a:hover, nav a.active {
+    color: var(--primary-color);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after, nav a.active::after {
+    width: 100%;
+}
+
+/* ======================== SEÇÕES DA PÁGINA INICIAL ======================== */
+#hero-banner {
+    text-align: center;
+    background-color: var(--bg-color-light);
+    padding: 0;
+    margin: 0;
+}
+
+#hero-banner img {
+    max-width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: contain;
+}
+
+#hero {
+    text-align: center;
+    padding-top: 30px;    
+    padding-bottom: 30px;
+    margin: 0;
+}
+
+#hero .container, #cta-final .container {
+    max-width: 700px;
+    text-align: center;
+}
+
+#diferenciais {
+    background-color: var(--bg-color-white);
+}
+
+#diferenciais h2 {
+    text-align: center;
+}
+
+.diferenciais-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.diferencial-item {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    padding: 35px 25px;
+    background-color: var(--bg-color-white);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.diferencial-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-strong);
+}
+
+.diferencial-item img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 25px;
+    object-fit: contain;
+}
+
+.diferencial-item p {
+    font-size: var(--fs-small);
+}
+
+/* ======================== FORMULÁRIO DE AGENDAMENTO ======================== */
+#agendamento-form {
+    background-color: transparent;
+}
+
+#agendamento-form .container {
+    max-width: 900px;
+    background-color: var(--bg-color-white);
+    border-radius: var(--border-radius-md);
+    padding: 60px;
+    box-shadow: var(--shadow-medium);
+}
+
+#agendamento-form h2, #agendamento-form p {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+    color: var(--text-color-dark);
+    font-size: var(--fs-small);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-secondary);
+    font-size: var(--fs-small);
+    transition: var(--transition);
+    background-color: var(--input-bg-color);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(44, 110, 73, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.error-message {
+    display: block;
+    margin-top: 8px;
+    color: var(--error-color);
+    font-size: var(--fs-error);
+    font-weight: 500;
+    min-height: 1em;
+}
+
+/* ======================== PÁGINA DE CONFIRMAÇÃO ======================== */
+#confirmacao {
+    background-color: transparent;
+}
+
+#confirmacao .container {
+    max-width: 800px;
+    background-color: var(--bg-color-white);
+    border-radius: var(--border-radius-md);
+    padding: 50px;
+    box-shadow: var(--shadow-medium);
+}
+
+#confirmacao h2, #confirmacao p {
+    text-align: center;
+}
+
+#dadosRecebidos {
+    background-color: var(--input-bg-color);
+    border-radius: var(--border-radius-sm);
+    padding: 25px;
+    margin-bottom: 40px;
+    border-left: 4px solid var(--primary-color);
+}
+
+#dadosRecebidos ul {
+    list-style: none;
+}
+
+#dadosRecebidos ul li {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid #eee;
+    font-size: var(--fs-small);
+}
+
+#dadosRecebidos ul li:last-child {
+    border-bottom: none;
+}
+
+#dadosRecebidos ul li strong {
+    color: var(--primary-color);
+    min-width: 180px;
+    display: inline-block;
+}
+
+.proximos-passos {
+    background-color: var(--bg-color-light);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--border-radius-md);
+}
+
+.proximos-passos h3, .proximos-passos p {
+    text-align: center;
+    color: var(--text-color-dark);
+}
+
+/* ======================== BOTÕES ======================== */
+.btn {
+    display: inline-block;
+    padding: 14px 35px;
+    border-radius: var(--border-radius-lg);
+    font-size: var(--fs-small);
+    font-weight: 700;
+    text-decoration: none; /* Garante que não haja sublinhado */
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    margin: 5px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-strong);
+}
+
+/* --- Estilos do Botão Primário */
+.btn.btn-primeiro,
+a.btn.btn-primeiro:visited { /*Regra para link visitado */
+    background-color: var(--primary-color);
+    color: var(--bg-color-white); /* FORÇA a cor do texto para branco */
+}
+
+.btn.btn-primeiro:hover {
+    background-color: var(--primary-color-darker);
+    color: var(--bg-color-white); /* Mantém a cor do texto no hover */
+}
+
+/* --- Estilos do Botão Secundário (Borda Verde) --- */
+.btn.btn-segundo,
+.botoes-acao .btn.btn-secondary,
+a.btn.btn-segundo:visited, /* ADICIONADO: Regra para link visitado */
+a.botoes-acao .btn.btn-secondary:visited {
+    background-color: var(--bg-color-white);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn.btn-segundo:hover,
+.botoes-acao .btn.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color-white);
+}
+
+#agendamento-form button[type="submit"] {
+    width: 100%;
+    margin-top: var(--spacing-md);
+}
+
+.botoes-acao {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+/* ======================== RODAPÉ ======================== */
+footer {
+    background-color: var(--footer-bg-color);
+    color: var(--bg-color-white);
+    text-align: center;
+    padding: 45px 0;
+    margin-top: var(--spacing-lg);
+}
+
+footer p {
+    color: var(--bg-color-white);
+    font-size: var(--fs-small);
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+
+
+/* ======================== PÁGINA SOBRE NÓS ======================== */
+/* Container da seção "Sobre a Desenvolvedora" */
+.desenvolvedora-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite quebrar a linha em telas menores */
+    gap: 40px; /* Espaçamento entre a foto e o texto */
+    background-color: var(--bg-color-white);
+    padding: 40px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Estilo para a imagem de perfil */
+.desenvolvedora-img img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover; /* Garante que a foto não fique distorcida */
+    border-radius: 50%; /* Deixa a foto redonda */
+    border: 5px solid var(--primary-color);
+}
+
+/* Bloco de informações de texto */
+.desenvolvedora-info {
+    flex: 1; /* Permite que o texto ocupe o espaço restante */
+    min-width: 300px; /* Largura mínima para o bloco de texto */
+}
+
+/* Container dos cards de tecnologia */
+.tecnologias-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Grid responsivo */
+    gap: 30px; /* Espaçamento entre os cards */
+    margin-top: 40px;
+}
+
+/* Estilo individual de cada card */
+.tech-card {
+    background-color: var(--bg-color-white);
+    padding: 30px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.tech-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-strong);
+}
+
+.tech-card img {
+    height: 80px; /* Altura padrão para os ícones */
+    margin-bottom: 20px;
+}
+
+.tech-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Card para as seções da página Sobre */
+.about-card {
+    background-color: var(--bg-color-white);
+    padding: 40px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+}
+
+/* ======================== RESPONSIVIDADE ======================== */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    nav ul {
+        margin-top: var(--spacing-md);
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    #agendamento-form .container, #confirmacao .container {
+        padding: 30px 20px;
+        width: 95%;
+    }
+    
+    .botoes-acao {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .botoes-acao .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    #dadosRecebidos ul li strong {
+        display: block;
+        margin-bottom: 5px;
+    }
+}

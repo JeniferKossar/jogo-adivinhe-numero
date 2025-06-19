@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Consulta - NutriBem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="img/logo_nutribem.png" alt="Logo NutriBem">
+                <div class="logo-text">
+                    </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="form.html">Agendar</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                    <li><a href="#" onclick="alert('Funcionalidade de Painel em desenvolvimento!')">Meu Painel</a></li>
+                    <li><a href="#" onclick="alert('Funcionalidade de Login em desenvolvimento!')">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <main>
+        <section id="agendamento-form">
+            <div class="container">
+                <h2>Agende sua Consulta</h2>
+                <p>Preencha o formulário abaixo para marcar sua consulta. Entraremos em contato para confirmar.</p>
+
+                <form id="consultaForm" action="formAction.html" method="GET">
+                    
+                    <div class="form-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" required>
+                        <span class="error-message" id="nomeError"></span> </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone (Opcional):</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX">
+                        <span class="error-message" id="telefoneError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profissional">Escolha o(a) Nutricionista:</label>
+                        <select id="profissional" name="profissional" required>
+                            <option value="">Selecione o profissional...</option>
+                            <option value="Dra. Ana Silva">Dra. Ana Silva - Especialista em Nutrição Esportiva</option>
+                            <option value="Dr. Carlos Lima">Dr. Carlos Lima - Especialista em Nutrição Clínica</option>
+                            <option value="Dra. Beatriz Costa">Dra. Beatriz Costa - Especialista em Nutrição Infantil</option>
+                        </select>
+                        <span class="error-message" id="profissionalError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipoConsulta">Tipo de Consulta:</label>
+                        <select id="tipoConsulta" name="tipoConsulta" required>
+                            <option value="">Selecione...</option>
+                            <option value="online">Online - R$ 150,00</option>
+                            <option value="presencial">Presencial - R$ 200,00</option>
+                        </select>
+                        <span class="error-message" id="tipoConsultaError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dataConsulta">Data Desejada:</label>
+                        <input type="date" id="dataConsulta" name="dataConsulta" required>
+                        <span class="error-message" id="dataConsultaError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="horarioConsulta">Horário Preferencial:</label>
+                        <input type="time" id="horarioConsulta" name="horarioConsulta" required>
+                        <span class="error-message" id="horarioConsultaError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="observacoes">Observações (Opcional):</label>
+                        <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+                        </div>
+
+                    <button type="submit" class="btn">Enviar Agendamento</button>
+
+                </form>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 NutriBem. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Agendamento - NutriBem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+
+    <header>
+    <div class="container">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="img/logo_nutribem.png" alt="Logo NutriBem">
+                <div class="logo-text">
+                    </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="form.html">Agendar</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                    <li><a href="#" onclick="alert('Funcionalidade de Painel em desenvolvimento!')">Meu Painel</a></li>
+                    <li><a href="#" onclick="alert('Funcionalidade de Login em desenvolvimento!')">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <main>
+        <section id="confirmacao">
+            <div class="container">
+                <h2>Pré-Agendamento Recebido!</h2>
+                <p>Obrigado por nos contatar. Recebemos os seguintes dados para o seu agendamento:</p>
+                
+                <div id="dadosRecebidos">
+                    </div>
+                
+                <div class="proximos-passos"> <h3>Próximos Passos</h3>
+                    <p>Nossa equipe entrará em contato em até <strong>24 horas úteis</strong> para:</p>
+                    <ul>
+                        <li>Confirmar a disponibilidade do horário solicitado.</li>
+                        <li>Fornecer instruções para sua consulta (online ou presencial).</li>
+                        <li>Enviar a confirmação final por e-mail.</li>
+                    </ul>
+                    <p>Em caso de dúvidas, entre em contato pelo e-mail: contato@nutribem.com.br</p>
+                </div>
+                
+                <div class="botoes-acao"> <a href="index.html" class="btn btn-primeiro">Voltar ao Início</a>
+                    <a href="form.html" class="btn btn-secondary">Novo Agendamento</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 NutriBem. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pega os parâmetros da URL (o que vem depois do "?")
+            const params = new URLSearchParams(window.location.search);
+            
+            // Pega a div onde vamos mostrar os dados
+            const dadosRecebidosDiv = document.getElementById('dadosRecebidos');
+            
+            let htmlConteudo = ''; // Variável para construir o HTML que será inserido
+
+            // Verifica se há algum parâmetro na URL
+            if (params.toString() === "") { // Se não houver nenhum parâmetro
+                htmlConteudo = '<p>Nenhum dado de agendamento foi recebido. Por favor, preencha o formulário.</p>';
+            } else {
+                htmlConteudo = '<ul>'; // Começa uma lista para mostrar os dados
+
+                // Função para formatar a data (dd/mm/aaaa)
+                const formatarData = (dataISO) => {
+                    if (!dataISO) return 'Não informada';
+                    const [ano, mes, dia] = dataISO.split('-');
+                    return `${dia}/${mes}/${ano}`;
+                };
+
+                // Função para formatar o horário (HH:MM)
+                const formatarHorario = (horario) => {
+                    if (!horario) return 'Não informado';
+                    return horario; // O input type="time" já envia no formato HH:MM
+                };
+                
+                // Verifica cada parâmetro que esperamos do formulário e adiciona à lista
+                if (params.has('nome')) {
+                    htmlConteudo += `<li><strong>Nome Completo:</strong> ${params.get('nome')}</li>`;
+                }
+                if (params.has('email')) {
+                    htmlConteudo += `<li><strong>E-mail:</strong> ${params.get('email')}</li>`;
+                }
+                if (params.has('telefone') && params.get('telefone') !== '') { // Só mostra se foi preenchido
+                    htmlConteudo += `<li><strong>Telefone:</strong> ${params.get('telefone')}</li>`;
+                }
+                if (params.has('profissional')) {
+                    htmlConteudo += `<li><strong>Nutricionista:</strong> ${params.get('profissional')}</li>`;
+                }
+                if (params.has('tipoConsulta')) {
+                    let tipo = params.get('tipoConsulta');
+                    if (tipo === 'online') tipo = 'Online - R$ 150,00';
+                    if (tipo === 'presencial') tipo = 'Presencial - R$ 200,00';
+                    htmlConteudo += `<li><strong>Tipo de Consulta:</strong> ${tipo}</li>`;
+                }
+                if (params.has('dataConsulta')) {
+                    htmlConteudo += `<li><strong>Data Desejada:</strong> ${formatarData(params.get('dataConsulta'))}</li>`;
+                }
+                if (params.has('horarioConsulta')) {
+                    htmlConteudo += `<li><strong>Horário Preferencial:</strong> ${formatarHorario(params.get('horarioConsulta'))}</li>`;
+                }
+                if (params.has('observacoes') && params.get('observacoes') !== '') { // Só mostra se foi preenchido
+                    htmlConteudo += `<li><strong>Observações:</strong> ${params.get('observacoes')}</li>`;
+                }
+                htmlConteudo += '</ul>'; // Fecha a lista
+            }
+            
+            // Coloca o HTML construído dentro da div "dadosRecebidos"
+            dadosRecebidosDiv.innerHTML = htmlConteudo;
+        });
+    </script>
+
+</body>
+</html>
